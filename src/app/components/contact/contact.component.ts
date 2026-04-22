@@ -8,7 +8,7 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
   standalone: true,
   imports: [CommonModule, RevealDirective, MagneticDirective],
   template: `
-    <section id="contact" class="py-32 px-6">
+    <section id="contact" class="py-20 md:py-32 px-6 pb-32 md:pb-20">
       <div class="container mx-auto">
         <div class="max-w-5xl mx-auto glass-card p-12 md:p-20 relative overflow-hidden border border-white/10" appReveal>
           

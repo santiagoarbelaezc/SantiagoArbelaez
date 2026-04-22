@@ -12,14 +12,14 @@ module.exports = {
           800: '#141414',
         },
         accent: {
-          cyan: '#00F5FF',
+          cyan: '#8B5E3C',
           gold: '#FFD700',
         }
       },
       fontFamily: {
-        headline: ['"Bebas Neue"', 'cursive'],
-        editorial: ['"DM Serif Display"', 'serif'],
-        sans: ['"Inter"', 'sans-serif'],
+        headline: ['"Roboto"', 'sans-serif'],
+        editorial: ['"Roboto"', 'sans-serif'],
+        sans: ['"Roboto"', 'sans-serif'],
       },
       animation: {
         'draw-svg': 'draw 2s ease-out forwards',

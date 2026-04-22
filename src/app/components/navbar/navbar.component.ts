@@ -1,53 +1,88 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MagneticDirective } from '../../shared/directives/magnetic.directive';
-import { ScrollColorService } from '../../services/scroll-color.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule, MagneticDirective],
   template: `
-    <nav class="fixed top-0 left-0 w-full z-[9000] px-6 py-5 transition-all duration-500">
-      <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-3 rounded-full transition-all duration-500"
-           [style.background]="isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)'"
-           [style.border]="isDark ? '1px solid rgba(255,255,255,0.10)' : '1px solid rgba(0,0,0,0.10)'"
-           style="backdrop-filter: blur(16px);">
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- DESKTOP: Top pill navbar (md+)              -->
+    <!-- ═══════════════════════════════════════════ -->
+    <nav class="hidden md:block fixed top-0 left-0 w-full z-[9000] px-6 py-5">
+      <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-3 rounded-full"
+           style="background: #ffffff; border: 1px solid rgba(0,0,0,0.10); box-shadow: 0 2px 20px rgba(0,0,0,0.08);">
 
         <!-- Logo -->
-        <div class="flex items-center gap-2 group cursor-pointer" appMagnetic [appMagnetic]="0.2">
+        <div class="flex items-center gap-2 cursor-pointer" appMagnetic [appMagnetic]="0.2">
           <svg width="36" height="36" viewBox="0 0 40 40">
-            <path d="M10 30V10H20C25 10 25 15 20 15H10"
-                  [attr.stroke]="isDark ? 'var(--accent-cyan)' : '#000000'"
-                  stroke-width="2" fill="none" />
-            <path d="M25 30V10"
-                  [attr.stroke]="isDark ? 'var(--accent-gold)' : '#000000'"
-                  stroke-width="2" fill="none" />
+            <path d="M10 30V10H20C25 10 25 15 20 15H10" stroke="#000000" stroke-width="2" fill="none" />
+            <path d="M25 30V10" stroke="var(--accent-cyan)" stroke-width="2" fill="none" />
           </svg>
-          <span class="font-headline text-xl tracking-tighter hidden md:block transition-colors duration-500"
-                [style.color]="isDark ? '#ffffff' : '#000000'">SANTIAGO.</span>
         </div>
 
-        <!-- Desktop Nav Links -->
-        <div class="hidden md:flex items-center gap-8">
-          <a *ngFor="let item of navItems"
+        <!-- Nav Links -->
+        <div class="flex items-center gap-8">
+          <a *ngFor="let item of desktopItems"
              [href]="item.link"
-             class="nav-link text-sm font-medium tracking-widest uppercase transition-colors duration-500 hover:text-accent-cyan"
-             [style.color]="isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)'"
+             class="nav-link text-sm font-medium tracking-widest uppercase hover:text-accent-cyan transition-colors"
+             style="color: rgba(0,0,0,0.65);"
              appMagnetic [appMagnetic]="0.3">
             {{ item.name }}
           </a>
         </div>
 
-        <!-- CTA Button -->
-        <button class="flex items-center gap-2 px-7 py-3 rounded-full transition-all duration-500 hover:border-accent-cyan"
-                [style.border]="isDark ? '1px solid rgba(255,255,255,0.20)' : '1px solid rgba(0,0,0,0.20)'"
-                [style.color]="isDark ? '#ffffff' : '#000000'"
+        <!-- CTA -->
+        <button class="flex items-center gap-2 px-7 py-3 rounded-full text-black hover:border-accent-cyan transition-all duration-300"
+                style="border: 1px solid rgba(0,0,0,0.20);"
                 appMagnetic [appMagnetic]="0.1">
           <span class="text-xs font-bold tracking-widest uppercase">Contact</span>
           <div class="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse"></div>
         </button>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MOBILE: Bottom app-style tab bar           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <nav class="md:hidden fixed bottom-4 left-4 right-4 z-[9000]">
+      <div class="flex items-center justify-around py-2 px-1 rounded-2xl"
+           style="background: #ffffff; border: 1px solid rgba(0,0,0,0.10); box-shadow: 0 8px 32px rgba(0,0,0,0.14);">
+
+        <a *ngFor="let item of mobileItems"
+           [href]="item.link"
+           class="mobile-nav-item flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 hover:bg-black/5">
+          <!-- Icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+               class="text-black/60" style="color: rgba(0,0,0,0.6);">
+            <ng-container *ngIf="item.icon === 'home'">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </ng-container>
+            <ng-container *ngIf="item.icon === 'grid'">
+              <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+            </ng-container>
+            <ng-container *ngIf="item.icon === 'user'">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </ng-container>
+            <ng-container *ngIf="item.icon === 'code'">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </ng-container>
+            <ng-container *ngIf="item.icon === 'mail'">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </ng-container>
+          </svg>
+          <span class="text-[9px] font-medium uppercase tracking-wider" style="color: rgba(0,0,0,0.55);">
+            {{ item.name }}
+          </span>
+        </a>
+
       </div>
     </nav>
   `,
@@ -68,28 +103,24 @@ import { Subscription } from 'rxjs';
     .nav-link:hover::after {
       width: 100%;
     }
+    .mobile-nav-item:active {
+      transform: scale(0.94);
+    }
   `]
 })
-export class NavbarComponent implements OnInit, OnDestroy {
-  isDark = false;
-  private sub?: Subscription;
-
-  navItems = [
+export class NavbarComponent {
+  desktopItems = [
     { name: 'Services', link: '#services' },
     { name: 'Projects', link: '#portfolio' },
     { name: 'About',    link: '#about' },
     { name: 'Tech',     link: '#skills' }
   ];
 
-  constructor(private scrollColorService: ScrollColorService) {}
-
-  ngOnInit() {
-    this.sub = this.scrollColorService.isDark$.subscribe(dark => {
-      this.isDark = dark;
-    });
-  }
-
-  ngOnDestroy() {
-    this.sub?.unsubscribe();
-  }
+  mobileItems = [
+    { name: 'Home',     link: '#hero',      icon: 'home'  },
+    { name: 'Projects', link: '#portfolio', icon: 'grid'  },
+    { name: 'About',    link: '#about',     icon: 'user'  },
+    { name: 'Tech',     link: '#skills',    icon: 'code'  },
+    { name: 'Contact',  link: '#contact',   icon: 'mail'  },
+  ];
 }

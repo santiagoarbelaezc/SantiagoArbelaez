@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +8,7 @@
   --obsidian-950: #000000;
   --obsidian-900: #0D0D0D;
   --obsidian-800: #141414;
-  --accent-cyan: #00F5FF;
+  --accent-cyan: #8B5E3C;
   --accent-gold: #FFD700;
 }
 
@@ -23,10 +23,15 @@
     @apply text-white font-sans selection:bg-accent-cyan selection:text-black;
     background: transparent;
     overflow-x: hidden;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4 {
     @apply font-headline;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
   }
 }
 

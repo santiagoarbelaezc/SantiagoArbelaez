@@ -7,7 +7,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
   standalone: true,
   imports: [CommonModule, RevealDirective],
   template: `
-    <section id="about" class="py-32 px-6 overflow-hidden">
+    <section id="about" class="py-20 md:py-32 px-6 overflow-hidden">
       <div class="container mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
@@ -33,10 +33,10 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
                 <div class="h-px w-12 bg-accent-cyan"></div>
                 <span class="text-accent-cyan text-xs uppercase tracking-[0.4em]">Philosophy</span>
               </div>
-              <h2 class="text-5xl md:text-7xl mb-8 text-black">Designing the Future, <br/><span class="font-editorial italic font-normal text-accent-cyan">One Pixel at a Time.</span></h2>
+              <h2 class="text-5xl md:text-7xl mb-8 text-black">Designing the Future, <br/><span class="font-light italic text-accent-cyan" style="letter-spacing: -0.02em;">One Pixel at a Time.</span></h2>
             </div>
 
-            <p class="text-xl leading-relaxed font-editorial italic text-black/65" appReveal [delay]="200">
+            <p class="text-xl leading-relaxed italic font-light text-black/65" appReveal [delay]="200">
               "Para mí, el diseño no es solo cómo se ve, sino cómo funciona y cómo hace sentir a las personas. Busco el equilibrio perfecto entre la elegancia editorial y la potencia tecnológica."
             </p>
 

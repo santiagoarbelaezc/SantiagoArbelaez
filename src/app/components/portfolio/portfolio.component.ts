@@ -7,7 +7,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
   standalone: true,
   imports: [CommonModule, RevealDirective],
   template: `
-    <section id="portfolio" class="py-32 px-6">
+    <section id="portfolio" class="py-20 md:py-32 px-6">
       <div class="container mx-auto">
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8" appReveal>
