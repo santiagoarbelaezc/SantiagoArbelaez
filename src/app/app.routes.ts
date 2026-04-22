@@ -3,7 +3,15 @@ import { LinktreeComponent } from './pages/linktree/linktree.component';
 import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
 
 export const routes: Routes = [
-  { path: '',          component: LinktreeComponent },
-  { path: 'portfolio', component: PortfolioPageComponent },
-  { path: '**',        redirectTo: '' }
+  { 
+    path: '', 
+    component: LinktreeComponent, 
+    data: { animation: 'LinktreePage' } 
+  },
+  { 
+    path: 'portfolio', 
+    component: PortfolioPageComponent, 
+    data: { animation: 'PortfolioPage' } 
+  },
+  { path: '**', redirectTo: '' }
 ];

@@ -23,7 +23,7 @@ module.exports = {
       },
       animation: {
         'draw-svg': 'draw 2s ease-out forwards',
-        'fade-up': 'fadeUp 0.8s ease-out forwards',
+        'fade-up': 'fadeUp 0.8s ease-out both',
         'marquee': 'marquee 25s linear infinite',
       },
       keyframes: {

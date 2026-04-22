@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, MagneticDirective],
+  imports: [CommonModule, MagneticDirective, RouterModule],
   template: `
     <!-- ═══════════════════════════════════════════ -->
     <!-- DESKTOP: Top pill navbar (md+)              -->
@@ -15,7 +16,7 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
            style="background: #ffffff; border: 1px solid rgba(0,0,0,0.10); box-shadow: 0 2px 20px rgba(0,0,0,0.08);">
 
         <!-- Logo -->
-        <div class="flex items-center gap-2 cursor-pointer" appMagnetic [appMagnetic]="0.2">
+        <div class="flex items-center gap-2 cursor-pointer" appMagnetic [appMagnetic]="0.2" routerLink="/">
           <svg width="36" height="36" viewBox="0 0 40 40">
             <path d="M10 30V10H20C25 10 25 15 20 15H10" stroke="#000000" stroke-width="2" fill="none" />
             <path d="M25 30V10" stroke="var(--accent-cyan)" stroke-width="2" fill="none" />
@@ -24,6 +25,11 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 
         <!-- Nav Links -->
         <div class="flex items-center gap-8">
+          <a routerLink="/"
+             class="nav-link text-sm font-bold tracking-widest uppercase text-accent-cyan"
+             appMagnetic [appMagnetic]="0.3">
+            Splash
+          </a>
           <a *ngFor="let item of desktopItems"
              [href]="item.link"
              class="nav-link text-sm font-medium tracking-widest uppercase hover:text-accent-cyan transition-colors"
@@ -80,6 +86,21 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
           </svg>
           <span class="text-[9px] font-medium uppercase tracking-wider" style="color: rgba(0,0,0,0.55);">
             {{ item.name }}
+          </span>
+        </a>
+
+        <!-- Extra for Linktree on Mobile -->
+        <a routerLink="/"
+           class="mobile-nav-item flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 hover:bg-black/5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+               class="text-accent-cyan">
+             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+             <line x1="8" y1="21" x2="16" y2="21"></line>
+             <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span class="text-[9px] font-bold uppercase tracking-wider text-accent-cyan">
+            Splash
           </span>
         </a>
 

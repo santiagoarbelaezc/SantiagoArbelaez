@@ -7,6 +7,7 @@ import { PortfolioComponent } from '../../components/portfolio/portfolio.compone
 import { AboutComponent } from '../../components/about/about.component';
 import { SkillsComponent } from '../../components/skills/skills.component';
 import { ContactComponent } from '../../components/contact/contact.component';
+import { StoryComponent } from '../../components/story/story.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ScrollColorService } from '../../services/scroll-color.service';
 import { Subscription } from 'rxjs';
@@ -23,6 +24,7 @@ import { Subscription } from 'rxjs';
     AboutComponent,
     SkillsComponent,
     ContactComponent,
+    StoryComponent,
     FooterComponent,
   ],
   template: `
@@ -30,6 +32,7 @@ import { Subscription } from 'rxjs';
     <main class="relative">
       <app-navbar></app-navbar>
       <app-hero></app-hero>
+      <app-story></app-story>
       <app-services></app-services>
       <app-portfolio></app-portfolio>
       <app-about></app-about>

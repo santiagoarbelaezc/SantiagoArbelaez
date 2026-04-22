@@ -1,11 +1,29 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, ChildrenOutletContexts } from '@angular/router';
+import { slideInAnimation } from './shared/route-animations';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `<router-outlet></router-outlet>`,
-  styles: []
+  animations: [slideInAnimation],
+  template: `
+    <div [@routeAnimations]="getRouteAnimationData()">
+      <router-outlet></router-outlet>
+    </div>
+  `,
+  styles: [`
+    :host {
+      display: block;
+      width: 100%;
+      min-height: 100vh;
+    }
+  `]
 })
-export class AppComponent {}
+export class AppComponent {
+  private contexts = inject(ChildrenOutletContexts);
+
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+  }
+}

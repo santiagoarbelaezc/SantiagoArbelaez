@@ -13,30 +13,30 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
         <!-- Text Content -->
         <div class="order-2 lg:order-1">
           <div class="overflow-hidden mb-4">
-            <h2 class="text-accent-cyan font-sans text-sm tracking-[0.3em] uppercase opacity-0 animate-fade-up" style="animation-delay: 1s;">
+            <h2 class="text-accent-cyan font-sans text-sm tracking-[0.3em] uppercase opacity-0 animate-fade-up" style="animation-delay: 0.8s;">
               Digital Visionary &amp; Developer
             </h2>
           </div>
 
           <h1 class="text-5xl sm:text-7xl md:text-9xl font-headline leading-none mb-6 md:mb-8" style="letter-spacing: -0.04em;">
             <span class="block overflow-hidden">
-              <span class="block animate-fade-up text-black" style="animation-delay: 1.2s;">REINVENTA.</span>
+              <span class="block animate-fade-up text-black" style="animation-delay: 1.0s;">REINVENTA.</span>
             </span>
             <span class="block overflow-hidden">
-              <span class="block animate-fade-up text-accent-cyan" style="animation-delay: 1.4s;">DISEÑA.</span>
+              <span class="block animate-fade-up text-accent-cyan" style="animation-delay: 1.2s;">DISEÑA.</span>
             </span>
             <span class="block overflow-hidden">
-              <span class="block animate-fade-up text-black" style="animation-delay: 1.6s;">IMPACTA.</span>
+              <span class="block animate-fade-up text-black" style="animation-delay: 1.4s;">IMPACTA.</span>
             </span>
           </h1>
 
-          <div class="flex gap-4 mt-8 md:mt-12 opacity-0 animate-fade-up" style="animation-delay: 2s;">
-            <button class="px-8 py-4 rounded-full border border-black/25 text-black hover:border-accent-cyan hover:text-accent-cyan transition-all duration-300" appMagnetic [appMagnetic]="0.2">
+          <div class="flex gap-4 mt-8 md:mt-12 opacity-0 animate-fade-up" style="animation-delay: 1.8s;">
+            <a href="#portfolio" class="px-8 py-4 rounded-full border border-black/25 text-black hover:border-accent-cyan hover:text-accent-cyan transition-all duration-300 flex items-center justify-center no-underline" appMagnetic [appMagnetic]="0.2">
               View Portfolio
-            </button>
-            <button class="px-8 py-4 text-black/50 hover:text-black transition-colors" appMagnetic [appMagnetic]="0.3">
+            </a>
+            <a href="#story" class="px-8 py-4 text-black/50 hover:text-black transition-colors flex items-center justify-center no-underline" appMagnetic [appMagnetic]="0.3">
               My Story
-            </button>
+            </a>
           </div>
         </div>
 
