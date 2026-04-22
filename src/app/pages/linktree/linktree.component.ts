@@ -2,26 +2,28 @@ import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { MagneticDirective } from '../../shared/directives/magnetic.directive';
+
 declare var AOS: any;
 
 @Component({
   selector: 'app-linktree',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MagneticDirective],
   template: `
     <div class="lt-wrapper">
       <div class="lt-container">
         
         <!-- HEADER / PROFILE -->
-        <header class="lt-header" data-aos="fade-down" data-aos-duration="1000">
+        <header class="lt-header" data-aos="fade-down" data-aos-duration="1200">
            <div class="lt-header-content">
-             <div class="lt-main-photo">
-                <img src="about-portrait.png" alt="Santiago Arbelaez" />
+             <div class="lt-main-photo" appMagnetic [appMagnetic]="0.2">
+                <img src="about-portrait.png" alt="Santiago Arbelaez" class="rounded-3xl shadow-2xl" />
                 <div class="lt-photo-decoration" style="border-color: #8B5E3C;"></div>
              </div>
              <div class="lt-header-info">
-               <h1 class="font-headline text-5xl md:text-7xl text-black leading-none">SANTIAGO<br/><span style="color: #8B5E3C;">ARBELAEZ</span></h1>
-               <p class="text-xs uppercase tracking-[0.2em] text-black/40 mt-2">Full Stack Developer & Architect</p>
+               <h1 class="font-headline text-6xl md:text-8xl text-black leading-none">SANTIAGO<br/><span style="color: #8B5E3C;">ARBELAEZ</span></h1>
+               <p class="text-sm uppercase tracking-[0.3em] text-black/40 mt-4">Full Stack Developer & Digital Architect</p>
              </div>
            </div>
         </header>
@@ -38,13 +40,13 @@ declare var AOS: any;
             </div>
             
             <div class="lt-dual-photos">
-              <div class="lt-small-photo" data-aos="zoom-in" data-aos-delay="400">
+              <div class="lt-small-photo rounded-3xl" data-aos="zoom-in" data-aos-delay="400">
                 <img src="hero-portrait.png" alt="Work" />
-                <div class="lt-photo-label">DEV</div>
+                <div class="lt-photo-label rounded-lg">DEV</div>
               </div>
-              <div class="lt-small-photo coffee-bg" data-aos="zoom-in" data-aos-delay="600">
+              <div class="lt-small-photo rounded-3xl coffee-bg" data-aos="zoom-in" data-aos-delay="600">
                 <img src="about-portrait.png" alt="Design" />
-                <div class="lt-photo-label">UIX</div>
+                <div class="lt-photo-label rounded-lg">UIX</div>
               </div>
             </div>
           </div>
@@ -53,37 +55,38 @@ declare var AOS: any;
           <div class="lt-col-2">
             <div class="lt-links-container">
               
-              <a routerLink="/portfolio" class="lt-card-link black-card" data-aos="fade-left" data-aos-delay="300">
-                <span class="lt-card-tag">MAIN</span>
+              <a routerLink="/portfolio" class="lt-card-link black-card rounded-2xl" data-aos="fade-left" data-aos-delay="300" appMagnetic [appMagnetic]="0.1">
+                <span class="lt-card-tag rounded-bl-xl">MAIN</span>
                 <div class="lt-card-body">
-                  <h3 class="text-2xl font-bold">PORTFOLIO</h3>
-                  <p class="text-[11px] text-white/40 tracking-widest uppercase">Full Experience</p>
+                  <h3 class="text-3xl font-bold">PORTFOLIO</h3>
+                  <p class="text-[12px] text-white/40 tracking-[0.2em] uppercase">Full Brand Experience</p>
                 </div>
-                <div class="lt-card-btn">→</div>
+                <div class="lt-card-btn text-3xl">→</div>
               </a>
 
-              <a href="https://www.instagram.com/santiagoarbelaezc/" target="_blank" class="lt-card-link white-card" data-aos="fade-left" data-aos-delay="400">
+
+              <a href="https://www.instagram.com/santiagoarbelaezc/" target="_blank" class="lt-card-link white-card rounded-2xl" data-aos="fade-left" data-aos-delay="400" appMagnetic [appMagnetic]="0.1">
                 <div class="lt-card-body">
-                  <h3 class="text-lg font-bold">INSTAGRAM</h3>
-                  <p class="text-[9px] text-black/30 tracking-widest uppercase">&#64;santiagoarbelaezc</p>
+                  <h3 class="text-2xl font-bold">INSTAGRAM</h3>
+                  <p class="text-[11px] text-black/30 tracking-[0.2em] uppercase">&#64;santiagoarbelaezc</p>
                 </div>
-                <div class="lt-card-btn coffee-text">↗</div>
+                <div class="lt-card-btn coffee-text text-3xl">↗</div>
               </a>
 
-              <a href="https://www.tiktok.com/@santiagoarbelaezc" target="_blank" class="lt-card-link white-card" data-aos="fade-left" data-aos-delay="500">
+              <a href="https://www.tiktok.com/@santiagoarbelaezc" target="_blank" class="lt-card-link white-card rounded-2xl" data-aos="fade-left" data-aos-delay="500" appMagnetic [appMagnetic]="0.1">
                 <div class="lt-card-body">
-                  <h3 class="text-lg font-bold">TIKTOK</h3>
-                  <p class="text-[9px] text-black/30 tracking-widest uppercase">Content Creator</p>
+                  <h3 class="text-2xl font-bold">TIKTOK</h3>
+                  <p class="text-[11px] text-black/30 tracking-[0.2em] uppercase">Content Creator</p>
                 </div>
-                <div class="lt-card-btn coffee-text">↗</div>
+                <div class="lt-card-btn coffee-text text-3xl">↗</div>
               </a>
 
-              <a href="https://wa.me/573000000000" target="_blank" class="lt-card-link coffee-card" data-aos="fade-left" data-aos-delay="600">
+              <a href="https://wa.me/573000000000" target="_blank" class="lt-card-link coffee-card rounded-2xl" data-aos="fade-left" data-aos-delay="600" appMagnetic [appMagnetic]="0.1">
                 <div class="lt-card-body">
-                  <h3 class="text-lg font-bold text-white">WHATSAPP</h3>
-                  <p class="text-[9px] text-white/40 tracking-widest uppercase">Direct Contact</p>
+                  <h3 class="text-2xl font-bold text-white">WHATSAPP</h3>
+                  <p class="text-[11px] text-white/40 tracking-[0.2em] uppercase">Direct Inquiry</p>
                 </div>
-                <div class="lt-card-btn text-white">↗</div>
+                <div class="lt-card-btn text-white text-3xl">↗</div>
               </a>
 
               <div class="lt-social-footer" data-aos="fade-up" data-aos-delay="800">
@@ -138,15 +141,15 @@ declare var AOS: any;
     }
     .lt-main-photo {
       position: relative;
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
     }
     .lt-main-photo img {
       width: 100%; height: 100%;
       object-fit: cover;
-      border-radius: 4px;
       filter: grayscale(100%);
-      transition: filter 0.5s ease;
+      transition: filter 0.8s ease, transform 0.8s ease;
+      border: 1px solid rgba(0,0,0,0.1);
     }
     .lt-main-photo:hover img {
       filter: grayscale(0%);
@@ -226,11 +229,11 @@ declare var AOS: any;
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
-      padding: 26px 32px;
-      border-radius: 4px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 32px 40px;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
     }
 
     .lt-card-tag {
