@@ -5,8 +5,9 @@
 @tailwind utilities;
 
 :root {
-  --obsidian-950: #0A0A0F;
-  --obsidian-900: #111118;
+  --obsidian-950: #000000;
+  --obsidian-900: #0D0D0D;
+  --obsidian-800: #141414;
   --accent-cyan: #00F5FF;
   --accent-gold: #FFD700;
 }
@@ -14,11 +15,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: none; /* Hide default cursor for custom cursor */
+    cursor: auto;
+    background: #ffffff; /* Ensure initial page paint is white before Angular boots */
   }
 
   body {
-    @apply bg-obsidian-950 text-white font-sans selection:bg-accent-cyan selection:text-obsidian-950;
+    @apply text-white font-sans selection:bg-accent-cyan selection:text-black;
+    background: transparent;
     overflow-x: hidden;
   }
 
@@ -41,7 +44,7 @@
   }
 
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply bg-white/[0.04] border border-white/10;
   }
 
   .glass-card {
@@ -55,7 +58,7 @@
   }
 
   .btn-primary {
-    @apply px-8 py-4 rounded-full border border-white/20 relative overflow-hidden transition-all duration-300 hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,245,255,0.3)];
+    @apply px-8 py-4 rounded-full border border-white/20 relative overflow-hidden transition-all duration-300 hover:border-accent-cyan/60;
   }
 }
 

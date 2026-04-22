@@ -7,7 +7,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
   standalone: true,
   imports: [CommonModule, RevealDirective],
   template: `
-    <section id="portfolio" class="py-32 px-6 bg-obsidian-950">
+    <section id="portfolio" class="py-32 px-6">
       <div class="container mx-auto">
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8" appReveal>
@@ -43,7 +43,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
                  class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
             
             <!-- Overlay -->
-            <div class="absolute inset-0 bg-obsidian-950/80 translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-between p-10">
+            <div class="absolute inset-0 bg-black/80 translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-between p-10">
               <div class="flex justify-between items-start">
                 <span class="text-xs uppercase tracking-widest text-accent-cyan">{{ project.category }}</span>
                 <span class="text-white/30 text-xs">{{ project.year }}</span>

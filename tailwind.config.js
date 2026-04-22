@@ -7,9 +7,9 @@ module.exports = {
     extend: {
       colors: {
         obsidian: {
-          950: '#0A0A0F',
-          900: '#111118',
-          800: '#1A1A24',
+          950: '#000000',
+          900: '#0D0D0D',
+          800: '#141414',
         },
         accent: {
           cyan: '#00F5FF',

@@ -1,7 +1,9 @@
 <app-cursor></app-cursor>
-<div class="noise-overlay"></div>
 
-<main class="relative bg-obsidian-950">
+<!-- Dynamic background layer — transitions between white and black on scroll -->
+<div class="dynamic-bg" [style.background]="currentBackground"></div>
+
+<main class="relative">
   <app-navbar></app-navbar>
   <app-hero></app-hero>
   <app-services></app-services>

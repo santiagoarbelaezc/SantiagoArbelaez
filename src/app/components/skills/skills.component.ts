@@ -7,7 +7,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
   standalone: true,
   imports: [CommonModule, RevealDirective],
   template: `
-    <section id="skills" class="py-20 bg-obsidian-950 border-y border-white/5 overflow-hidden">
+    <section id="skills" class="py-20 border-y border-white/5 overflow-hidden">
       <!-- Marquee Wrapper -->
       <div class="relative flex overflow-hidden">
         <div class="flex animate-marquee whitespace-nowrap gap-12 py-10">

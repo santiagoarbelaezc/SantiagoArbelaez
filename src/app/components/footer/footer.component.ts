@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <footer class="bg-obsidian-950 pt-32 pb-12 px-6 overflow-hidden relative">
+    <footer id="footer" class="pt-32 pb-12 px-6 overflow-hidden relative">
       <!-- Large Ghost Text -->
       <div class="absolute bottom-0 left-1/2 -translate-x-1/2 select-none pointer-events-none">
         <h2 class="text-[25vw] font-headline leading-none text-white opacity-[0.02] whitespace-nowrap">
