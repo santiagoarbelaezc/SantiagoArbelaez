@@ -31,21 +31,17 @@ declare var AOS: any;
               <h1 class="font-headline text-6xl md:text-8xl text-black leading-[0.85] tracking-tighter">
                 SANTIAGO<br/><span style="color: #8B5E3C;">ARBELAEZ</span>
               </h1>
-              <p class="text-sm uppercase tracking-[0.4em] text-black/40 mt-6 font-medium">Digital Creator & Full Stack Architect</p>
+              <p class="text-sm uppercase tracking-[0.4em] text-black/40 mt-6 font-medium">Digital Creator & Full Stack</p>
             </header>
 
-            <div class="lt-bio-section" data-aos="fade-up" data-aos-delay="400">
-              <p class="text-xl md:text-2xl font-light leading-relaxed text-black/70 italic border-l-2 border-coffee pl-8 py-2 my-10">
-                "Fusionando la estética editorial con la potencia tecnológica para crear experiencias digitales inolvidables."
-              </p>
-            </div>
+
 
             <div class="lt-primary-cta" data-aos="fade-up" data-aos-delay="600">
               <a routerLink="/portfolio" class="lt-btn-full black-card rounded-2xl mb-6" appMagnetic [appMagnetic]="0.1">
-                <span class="lt-btn-tag uppercase">Featured</span>
+                <span class="lt-btn-tag uppercase">¡Hola!</span>
                 <div class="lt-btn-content">
-                  <h3 class="text-4xl font-bold">PORTFOLIO</h3>
-                  <p class="text-[13px] text-white/40 tracking-[0.2em] uppercase mt-2">Full Brand Experience</p>
+                  <h3 class="text-4xl font-bold">SOBRE MÍ</h3>
+                  <p class="text-[13px] text-white/40 tracking-[0.2em] uppercase mt-2">Descubre mi trabajo</p>
                 </div>
                 <div class="lt-btn-arrow text-5xl">→</div>
               </a>
@@ -72,7 +68,7 @@ declare var AOS: any;
           <aside class="lt-col-social">
             
             <!-- Secondary Photo 1 -->
-            <div class="lt-photo-box" data-aos="zoom-in" data-aos-delay="500">
+            <div class="lt-photo-box hidden md:block" data-aos="zoom-in" data-aos-delay="500">
               <div class="lt-img-wrap rounded-3xl overflow-hidden" appMagnetic [appMagnetic]="0.1">
                 <img src="hero-portrait.png" alt="Process" class="grayscale hover:grayscale-0 transition-all duration-700" />
                 <span class="lt-img-label">UIX</span>
@@ -341,12 +337,39 @@ declare var AOS: any;
     }
 
     @media (max-width: 768px) {
-      .lt-wrapper { padding: 40px 20px; align-items: start; }
-      .lt-main-grid { grid-template-columns: 1fr; }
+      .lt-wrapper { padding: 30px 20px; align-items: start; }
+      .lt-main-grid { grid-template-columns: 1fr; gap: 20px; } /* Reduced gap to move links up */
       .lt-col-photo { position: relative; top: 0; }
+      
+      /* Make top image smaller and centered */
+      .lt-portrait-wrapper {
+        width: 55%; /* Made image even smaller */
+        max-width: 240px;
+        margin: 0 auto;
+      }
+      .lt-main-img {
+        aspect-ratio: 4/5;
+        border-radius: 24px;
+      }
+      .lt-photo-tag {
+        bottom: 12px;
+        left: -8px;
+        font-size: 8px;
+        padding: 4px 8px;
+      }
+
+      /* Reduce text size and margins for info column */
+      .lt-col-info { padding-top: 0; text-align: center; }
+      .lt-info-header h1 { font-size: 3.5rem; line-height: 0.9; } /* Smaller text */
+      .lt-info-header p { font-size: 0.7rem; margin-top: 12px; } /* Smaller text and tighter margin */
+      
+      .lt-primary-cta { margin-top: 24px; } /* Closer to header */
+
       .lt-col-social { grid-column: span 1; }
-      .lt-photo-box { width: 100%; }
-      .lt-btn-full { padding: 30px 24px; }
+      .lt-photo-box { width: 100%; margin-top: 20px; }
+      .lt-btn-full { padding: 24px 20px; }
+      
+      .lt-social-card { padding: 16px 20px; }
     }
   `]
 })

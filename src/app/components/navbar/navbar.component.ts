@@ -25,14 +25,10 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 
         <!-- Nav Links -->
         <div class="flex items-center gap-8">
-          <a routerLink="/"
-             class="nav-link text-sm font-bold tracking-widest uppercase text-accent-cyan"
-             appMagnetic [appMagnetic]="0.3">
-            Splash
-          </a>
+
           <a *ngFor="let item of desktopItems"
-             [href]="item.link"
-             class="nav-link text-sm font-medium tracking-widest uppercase hover:text-accent-cyan transition-colors"
+             (click)="scrollTo(item.link, $event)"
+             class="nav-link text-sm font-medium tracking-widest uppercase cursor-pointer hover:text-accent-cyan transition-colors"
              style="color: rgba(0,0,0,0.65);"
              appMagnetic [appMagnetic]="0.3">
             {{ item.name }}
@@ -40,10 +36,10 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
         </div>
 
         <!-- CTA -->
-        <button class="flex items-center gap-2 px-7 py-3 rounded-full text-black hover:border-accent-cyan transition-all duration-300"
+        <button (click)="scrollTo('#contact', $event)" class="flex items-center gap-2 px-7 py-3 rounded-full text-black hover:border-accent-cyan transition-all duration-300"
                 style="border: 1px solid rgba(0,0,0,0.20);"
                 appMagnetic [appMagnetic]="0.1">
-          <span class="text-xs font-bold tracking-widest uppercase">Contact</span>
+          <span class="text-xs font-bold tracking-widest uppercase">Contacto</span>
           <div class="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse"></div>
         </button>
       </div>
@@ -57,8 +53,8 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
            style="background: #ffffff; border: 1px solid rgba(0,0,0,0.10); box-shadow: 0 8px 32px rgba(0,0,0,0.14);">
 
         <a *ngFor="let item of mobileItems"
-           [href]="item.link"
-           class="mobile-nav-item flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 hover:bg-black/5">
+           (click)="scrollTo(item.link, $event)"
+           class="mobile-nav-item flex flex-col items-center gap-1 px-4 py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-black/5">
           <!-- Icon -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
@@ -79,6 +75,11 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
             </ng-container>
+            <ng-container *ngIf="item.icon === 'layers'">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </ng-container>
             <ng-container *ngIf="item.icon === 'mail'">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
@@ -86,21 +87,6 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
           </svg>
           <span class="text-[9px] font-medium uppercase tracking-wider" style="color: rgba(0,0,0,0.55);">
             {{ item.name }}
-          </span>
-        </a>
-
-        <!-- Extra for Linktree on Mobile -->
-        <a routerLink="/"
-           class="mobile-nav-item flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 hover:bg-black/5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-               class="text-accent-cyan">
-             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-             <line x1="8" y1="21" x2="16" y2="21"></line>
-             <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-          <span class="text-[9px] font-bold uppercase tracking-wider text-accent-cyan">
-            Splash
           </span>
         </a>
 
@@ -131,17 +117,31 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 })
 export class NavbarComponent {
   desktopItems = [
-    { name: 'Services', link: '#services' },
-    { name: 'Projects', link: '#portfolio' },
-    { name: 'About',    link: '#about' },
-    { name: 'Tech',     link: '#skills' }
+    { name: 'Proyectos', link: '#portfolio' },
+    { name: 'Acerca de mi', link: '#about' },
+    { name: 'Servicios', link: '#skills' }
   ];
 
   mobileItems = [
-    { name: 'Home',     link: '#hero',      icon: 'home'  },
-    { name: 'Projects', link: '#portfolio', icon: 'grid'  },
-    { name: 'About',    link: '#about',     icon: 'user'  },
-    { name: 'Tech',     link: '#skills',    icon: 'code'  },
-    { name: 'Contact',  link: '#contact',   icon: 'mail'  },
+    { name: 'Inicio',     link: '#hero',      icon: 'home'  },
+    { name: 'Proyectos', link: '#portfolio', icon: 'grid'  },
+    { name: 'Acerca de mi', link: '#about',     icon: 'user'  },
+    { name: 'Servicios', link: '#skills',  icon: 'layers' },
+    { name: 'Contacto',  link: '#contact',   icon: 'mail'  },
   ];
+
+  scrollTo(link: string, event: Event) {
+    event.preventDefault();
+    const element = document.getElementById(link.replace('#', ''));
+    if (element) {
+      const offset = 100; // Account for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
 }

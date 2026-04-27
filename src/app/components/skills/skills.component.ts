@@ -51,14 +51,9 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
 })
 export class SkillsComponent {
   techStack = [
-    { name: 'Angular 18', icon: 'code' },
-    { name: 'TypeScript', icon: 'zap' },
-    { name: 'Tailwind CSS', icon: 'layers' },
-    { name: 'Figma', icon: 'figma' },
-    { name: 'Next.js', icon: 'code' },
-    { name: 'PostgreSQL', icon: 'layers' },
-    { name: 'Node.js', icon: 'zap' },
-    { name: 'Three.js', icon: 'code' }
+    { name: 'Edición', icon: 'zap' },
+    { name: 'Diseño', icon: 'figma' },
+    { name: 'Implementación', icon: 'code' }
   ];
 
   softSkills = [

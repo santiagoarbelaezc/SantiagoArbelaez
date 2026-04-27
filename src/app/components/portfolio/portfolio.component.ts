@@ -79,7 +79,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
 })
 export class PortfolioComponent {
   currentTab = 'All';
-  tabs = ['All', 'Web Apps', 'Branding', 'UI/UX'];
+  tabs = ['All', 'Web Apps', 'UI/UX'];
 
   projects = [
     {
@@ -97,22 +97,6 @@ export class PortfolioComponent {
       image: 'project-2.png',
       description: 'High-end fashion gallery with complex grid layouts and cinematic transitions.',
       cols: 'span-5'
-    },
-    {
-      title: 'Luxe Branding',
-      category: 'Branding',
-      year: '2024',
-      image: 'project-1.png', // Reusing for demo
-      description: 'Brand identity and design system for a boutique architectural firm.',
-      cols: 'span-5'
-    },
-    {
-      title: 'Zenit Shop',
-      category: 'E-commerce',
-      year: '2025',
-      image: 'project-2.png', // Reusing for demo
-      description: 'Minimalist e-commerce experience with seamless checkout and micro-interactions.',
-      cols: 'span-7'
     }
   ];
 

@@ -31,11 +31,8 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
           </h1>
 
           <div class="flex gap-4 mt-8 md:mt-12 opacity-0 animate-fade-up" style="animation-delay: 1.8s;">
-            <a href="#portfolio" class="px-8 py-4 rounded-full border border-black/25 text-black hover:border-accent-cyan hover:text-accent-cyan transition-all duration-300 flex items-center justify-center no-underline" appMagnetic [appMagnetic]="0.2">
+            <a (click)="scrollTo('#portfolio', $event)" class="cursor-pointer px-8 py-4 rounded-full border border-black/25 text-black hover:border-accent-cyan hover:text-accent-cyan transition-all duration-300 flex items-center justify-center no-underline" appMagnetic [appMagnetic]="0.2">
               View Portfolio
-            </a>
-            <a href="#story" class="px-8 py-4 text-black/50 hover:text-black transition-colors flex items-center justify-center no-underline" appMagnetic [appMagnetic]="0.3">
-              My Story
             </a>
           </div>
         </div>
@@ -97,5 +94,20 @@ export class HeroComponent {
 
   onImageLeave() {
     this.parallaxTransform = 'rotateX(0deg) rotateY(0deg)';
+  }
+
+  scrollTo(link: string, event: Event) {
+    event.preventDefault();
+    const element = document.getElementById(link.replace('#', ''));
+    if (element) {
+      const offset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   }
 }
