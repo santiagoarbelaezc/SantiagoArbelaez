@@ -4,10 +4,9 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 
 @Component({
-  selector: 'app-services',
-  standalone: true,
-  imports: [CommonModule, RevealDirective, MagneticDirective],
-  template: `
+    selector: 'app-services',
+    imports: [CommonModule, RevealDirective, MagneticDirective],
+    template: `
     <section id="services" class="py-20 md:py-32 px-6 overflow-hidden">
       <div class="container mx-auto">
         <!-- Section Header -->

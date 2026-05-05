@@ -3,16 +3,15 @@ import { RouterOutlet, ChildrenOutletContexts } from '@angular/router';
 import { slideInAnimation } from './shared/route-animations';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  animations: [slideInAnimation],
-  template: `
+    selector: 'app-root',
+    imports: [RouterOutlet],
+    animations: [slideInAnimation],
+    template: `
     <div [@routeAnimations]="getRouteAnimationData()">
       <router-outlet></router-outlet>
     </div>
   `,
-  styles: [`
+    styles: [`
     :host {
       display: block;
       width: 100%;

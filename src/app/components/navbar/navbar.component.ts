@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [CommonModule, MagneticDirective, RouterModule],
-  template: `
+    selector: 'app-navbar',
+    imports: [CommonModule, MagneticDirective, RouterModule],
+    template: `
     <!-- ═══════════════════════════════════════════ -->
     <!-- DESKTOP: Top pill navbar (md+)              -->
     <!-- ═══════════════════════════════════════════ -->
@@ -93,7 +92,7 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
       </div>
     </nav>
   `,
-  styles: [`
+    styles: [`
     .nav-link {
       position: relative;
     }

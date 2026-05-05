@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-footer',
+    imports: [CommonModule],
+    template: `
     <footer id="footer" class="pt-32 pb-12 px-6 overflow-hidden relative">
       <!-- Large Ghost Text -->
       <div class="absolute bottom-0 left-1/2 -translate-x-1/2 select-none pointer-events-none">

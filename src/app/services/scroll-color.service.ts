@@ -8,7 +8,6 @@ export class ScrollColorService {
   // Define the intended background color for each section
   private readonly palette = [
     { id: 'hero',      color: '#FFFFFF' },
-    { id: 'services',  color: '#000000' },
     { id: 'portfolio', color: '#080808' },
     { id: 'about',     color: '#F5F5F5' },
     { id: 'skills',    color: '#000000' },

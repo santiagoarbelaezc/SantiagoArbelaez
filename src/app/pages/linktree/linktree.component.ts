@@ -7,10 +7,9 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 declare var AOS: any;
 
 @Component({
-  selector: 'app-linktree',
-  standalone: true,
-  imports: [CommonModule, RouterModule, MagneticDirective],
-  template: `
+    selector: 'app-linktree',
+    imports: [CommonModule, RouterModule, MagneticDirective],
+    template: `
     <div class="lt-wrapper">
       <div class="lt-container">
         
@@ -135,7 +134,7 @@ declare var AOS: any;
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     :host {
       --coffee: #8B5E3C;
       --black: #0a0a0a;

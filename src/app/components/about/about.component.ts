@@ -1,20 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [CommonModule, RevealDirective],
-  template: `
-    <section id="about" class="py-20 md:py-32 px-6 overflow-hidden">
+    selector: 'app-about',
+    standalone: true,
+    imports: [CommonModule, RevealDirective],
+    template: `
+    <section id="about" class="py-20 md:py-32 px-6 overflow-hidden" *ngIf="data?.visible !== false">
       <div class="container mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
           <!-- Image with Clip-path -->
           <div class="relative" appReveal>
             <div class="aspect-[4/5] overflow-hidden rounded-3xl" style="clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);">
-              <img src="about-portrait.png" alt="Creative Profile" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+              <img [src]="data?.avatarImage || 'about-portrait.png'" alt="Creative Profile" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
             </div>
 
             <!-- Decorative corner element -->
@@ -36,16 +36,9 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
               <h2 class="text-5xl md:text-7xl mb-8 text-black">Designing the Future, <br/><span class="font-light italic text-accent-cyan" style="letter-spacing: -0.02em;">One Pixel at a Time.</span></h2>
             </div>
 
-            <p class="text-xl leading-relaxed italic font-light text-black/65" appReveal [delay]="200">
-              "Para mí, el diseño no es solo cómo se ve, sino cómo funciona y cómo hace sentir a las personas. Busco el equilibrio perfecto entre la elegancia editorial y la potencia tecnológica."
-            </p>
-
             <div class="space-y-6 leading-relaxed text-black/55" appReveal [delay]="400">
-              <p>
-                As a multi-disciplinary creator based in the digital space, I blend clean frontend architecture with high-end aesthetic vision. My work is defined by a commitment to perfection and an obsession with micro-interactions.
-              </p>
-              <p>
-                From premium e-commerce experiences to complex SaaS dashboards, my goal is always the same: to create digital products that are unforgettable.
+              <p class="whitespace-pre-line text-xl leading-relaxed">
+                {{ data?.text || 'As a multi-disciplinary creator based in the digital space, I blend clean frontend architecture with high-end aesthetic vision.' }}
               </p>
             </div>
 
@@ -62,11 +55,12 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     .animate-spin-slow { animation: spin 15s linear infinite; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   `]
 })
 export class AboutComponent {
+  @Input() data: any;
   highlightSkills = ['Creative Direction', 'Senior Frontend', 'UI/UX Design', 'Visual Storytelling'];
 }
