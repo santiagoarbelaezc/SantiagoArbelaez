@@ -59,7 +59,7 @@ export class ScrollColorService {
 
     // Use the TOP of the viewport + a small nudge as the anchor.
     // This guarantees: at scrollY=0, we are solidly inside section[0] → pure white.
-    const Y = window.pageYOffset + window.innerHeight * 0.08;
+    const Y = window.pageYOffset + window.innerHeight * 0.3;
 
     for (let i = 0; i < this.positions.length; i++) {
       const curr = this.positions[i];

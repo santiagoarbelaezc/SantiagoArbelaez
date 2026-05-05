@@ -24,13 +24,20 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
             </span>
           </h1>
           
-          <p class="text-lg md:text-xl text-black/60 max-w-md animate-fade-up mb-8" style="animation-delay: 1.4s;">
+          <p class="text-lg md:text-xl text-black/60 max-w-md animate-fade-up mb-12" style="animation-delay: 1.4s;">
             {{ data?.description }}
           </p>
 
-          <div class="flex gap-4 mt-8 md:mt-12 opacity-0 animate-fade-up" style="animation-delay: 1.8s;">
-            <a (click)="scrollTo('#portfolio', $event)" class="cursor-pointer px-8 py-4 rounded-full border border-black/25 text-black hover:border-accent-cyan hover:text-accent-cyan transition-all duration-300 flex items-center justify-center no-underline" appMagnetic [appMagnetic]="0.2">
-              {{ data?.ctaText || 'View Portfolio' }}
+          <div class="flex gap-4 opacity-0 animate-fade-up" style="animation-delay: 1.8s;">
+            <a (click)="scrollTo('#portfolio', $event)" 
+               class="cta-button group cursor-pointer no-underline" 
+               appMagnetic [appMagnetic]="0.2">
+              <span class="cta-text">{{ data?.ctaText || 'View Portfolio' }}</span>
+              <div class="cta-icon-wrapper">
+                <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </a>
           </div>
         </div>
@@ -65,6 +72,72 @@ import { MagneticDirective } from '../../shared/directives/magnetic.directive';
     </section>
   `,
     styles: [`
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.25rem 2.5rem;
+      background: #000;
+      color: #fff;
+      border-radius: 9999px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #00e5ff; /* Cyan accent */
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
+    }
+
+    .cta-button:hover::before {
+      transform: translateY(0);
+    }
+
+    .cta-text {
+      position: relative;
+      z-index: 1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      transition: color 0.4s;
+    }
+
+    .cta-button:hover .cta-text {
+      color: #000;
+    }
+
+    .cta-icon-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta-button:hover .cta-icon-wrapper {
+      transform: translate(3px, -3px);
+    }
+
+    .cta-icon {
+      width: 100%; height: 100%;
+      stroke: #fff;
+      transition: stroke 0.4s;
+    }
+
+    .cta-button:hover .cta-icon {
+      stroke: #000;
+    }
+
     .animate-bounce-slow {
       animation: bounce-slow 4s infinite ease-in-out;
     }
